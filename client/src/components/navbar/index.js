@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css'
 import {
     Collapse,
     Navbar,
@@ -33,10 +32,10 @@ export default class NavHeader extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink style={{ 'color': 'blanchedalmond' }} href="/">Search</NavLink>
+                                <NavLink style={{ 'color': 'blanchedalmond' }} href="/search">Search</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink style={{ 'color': 'blanchedalmond' }} href="/">Saved</NavLink>
+                                <NavLink style={{ 'color': 'blanchedalmond' }} href="/saved">Saved</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

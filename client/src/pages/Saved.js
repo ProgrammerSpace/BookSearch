@@ -1,9 +1,11 @@
 import React from 'react';
+import Navbar from '../components/navbar';
 
 function SavedPage() {
     return (
         <>
-            <h1>Yet to build this page!</h1>
+            <Navbar />
+            <h1 className='text-center'>Yet to build this page!</h1>
         </>
     );
 }
