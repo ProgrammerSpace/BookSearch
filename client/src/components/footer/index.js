@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <>
             <br />
-            <Navbar className='bgcolor'>Footer</Navbar>
+            <Navbar className='fixed-bottom bgcolor'>Footer</Navbar>
         </>
     );
 };
