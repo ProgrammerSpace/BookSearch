@@ -10,7 +10,7 @@ const bookHolder = (props) => {
     return (
         <Card className="m-2">
             <CardBody>
-                {console.log(data)}
+                {console.log(props.title.id)}
                 {data.imageLinks ? (
                     <img src={data.imageLinks.thumbnail} alt={data.title} className="float-left p-3" />
                 ) : (<img src={imagePlaceHolder} alt={data.title} className="float-left p-3" height="200px" width="150px" />)}
@@ -19,7 +19,7 @@ const bookHolder = (props) => {
                 <CardText>{data.description}
                     <a href={data.infoLink} target="blank"><strong>see more...</strong></a>
                 </CardText>
-                <Button color="primary" className="float-right">Save to my list</Button>
+                <Button color="primary" className="float-right" id={props.title.id} onClick={props.savebook}>Save to my list</Button>
             </CardBody>
         </Card>
     );

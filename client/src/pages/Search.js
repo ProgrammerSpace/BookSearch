@@ -36,6 +36,22 @@ class SearchPage extends Component {
             .catch(err => console.log(err));
     }
 
+    saveBook = (event) => {
+        console.log("saving book! for id " + event.target.id);
+        let bookToSave = this.state.books.filter(book => book.id === event.target.id)
+        let bookDetails = {
+            title: bookToSave[0].volumeInfo.title,
+            author: bookToSave[0].volumeInfo.authors.length === 1 ? (bookToSave[0].volumeInfo.authors.toString()) : (bookToSave[0].volumeInfo.authors.join(",")),
+            description: bookToSave[0].volumeInfo.description,
+            image: bookToSave[0].volumeInfo.imageLinks.thumbnail,
+            info: bookToSave[0].volumeInfo.infoLink
+        }
+        console.log(bookDetails)
+        API.saveBook(bookDetails)
+            .then(alert(`Book saved to your list!`))
+            .catch(err => console.log(err))
+    }
+
     render() {
         return (
             <>
@@ -60,7 +76,7 @@ class SearchPage extends Component {
                             <div>
                                 <h3 className="mb-2">Search results!</h3>
                                 {this.state.books.map(book => (
-                                    <BookHolder key={book.id} title={book} />
+                                    <BookHolder key={book.id} title={book} savebook={this.saveBook} />
                                 ))}
                             </div>
                         ) : (
