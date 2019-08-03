@@ -23,28 +23,29 @@ class SearchPage extends Component {
 
     searchBook = (event) => {
         event.preventDefault();
-        console.log("search book hit!");
-        API.findBook(this.state.searchStr)
-            .then(res => {
-                console.log(res.data);
-                this.setState({
-                    books: res.data.items,
-                    searchStr: ""
-                })
-            }
-            )
-            .catch(err => console.log(err));
+        if (this.state.searchStr !== "") {
+            API.findBook(this.state.searchStr)
+                .then(res => {
+                    console.log(res.data);
+                    this.setState({
+                        books: res.data.items,
+                        searchStr: ""
+                    })
+                }
+                )
+                .catch(err => console.log(err));
+        }
     }
 
     saveBook = (event) => {
         console.log("saving book! for id " + event.target.id);
+        let imagePlaceHolder = "https://fisnikde.com/wp-content/uploads/2019/01/broken-image.png";
         let bookToSave = this.state.books.filter(book => book.id === event.target.id)
         let bookDetails = {
             title: bookToSave[0].volumeInfo.title,
-            // author: bookToSave[0].volumeInfo.authors.length === 1 ? (bookToSave[0].volumeInfo.authors.toString()) : (bookToSave[0].volumeInfo.authors.join(",")),
             author: bookToSave[0].volumeInfo.authors,
             description: bookToSave[0].volumeInfo.description,
-            image: bookToSave[0].volumeInfo.imageLinks.thumbnail,
+            image: bookToSave[0].volumeInfo.imageLinks ? bookToSave[0].volumeInfo.imageLinks.thumbnail : imagePlaceHolder,
             info: bookToSave[0].volumeInfo.infoLink
         }
         console.log(bookDetails)
