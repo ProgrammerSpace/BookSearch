@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/books");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Mybooklist", { useNewUrlParser: true });
 console.log("after mongoose connection!");
 console.log(mongoose.connection.readyState);
 

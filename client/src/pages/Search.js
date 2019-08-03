@@ -41,7 +41,8 @@ class SearchPage extends Component {
         let bookToSave = this.state.books.filter(book => book.id === event.target.id)
         let bookDetails = {
             title: bookToSave[0].volumeInfo.title,
-            author: bookToSave[0].volumeInfo.authors.length === 1 ? (bookToSave[0].volumeInfo.authors.toString()) : (bookToSave[0].volumeInfo.authors.join(",")),
+            // author: bookToSave[0].volumeInfo.authors.length === 1 ? (bookToSave[0].volumeInfo.authors.toString()) : (bookToSave[0].volumeInfo.authors.join(",")),
+            author: bookToSave[0].volumeInfo.authors,
             description: bookToSave[0].volumeInfo.description,
             image: bookToSave[0].volumeInfo.imageLinks.thumbnail,
             info: bookToSave[0].volumeInfo.infoLink
